@@ -24,8 +24,6 @@ DoCopy()
 {
 	cpFrom="$ScriptsPath/${PathName[@]}/$MainFile"
 	cpTo="$CurrentPath/$MainFile"
-	#echo "copy from $cpFrom $cpTo"
-	#rm $MainFile
 	cp "$cpFrom" "$cpTo"
 	dialog --title 'File Copied' --msgbox "$cpFrom was copied to $enTo" 6 60
 }
@@ -43,13 +41,11 @@ DoMenu()
 	while read line
 	do
 		array[ $i ]="$line" 
-		#options="${options} ${x} \"$line\" off"$'\n'
 		if [[ -n "$options" ]]; then
 			options=("${options[@]}" "$x" "\"$line\"" "off")
 		else
 			options=("$x" "\"$line\"" "off")
 		fi
-		#options=("${options[@]}" "$x" "$line")
 		(( i++ ))
 		(( x++ ))
 	done < <(ls $ScriptsPath)
